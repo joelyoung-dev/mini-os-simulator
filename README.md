@@ -26,7 +26,7 @@ Processes are executed based on priority values from 1-5, with higher priority p
 
 Commands:
 
-addproc <name> <burst_time> <priority>
+`addproc <name> <burst_time> <priority>`
 
 schedfifo
 
@@ -54,9 +54,9 @@ Implemented features:
 
 Commands:
 
-allocmem <pid> <pages>
+`allocmem <pid> <pages>`
 
-freemem <pid>
+`freemem <pid>`
 
 memstatus
 
@@ -82,13 +82,13 @@ Implemented features:
 
 Commands:
 
-create <filename> <content>
+`create <filename> <content>`
 
-read <filename>
+`read <filename>`
 
-write <filename> <content>
+`write <filename> <content>`
 
-delete <filename>
+`delete <filename>`
 
 ls
 
