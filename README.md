@@ -1,54 +1,152 @@
+# Mini Operating System Simulator
+
+A command-line operating system simulator written in C++ that demonstrates fundamental operating system concepts including CPU scheduling, memory management, paging, virtual file systems, and shell-based user interaction.
+
+This project was created to explore how operating systems manage processes, allocate memory, and handle file operations through a simulated environment.
+
+---
+
+# Features
+
+## Process Scheduling
+
+The simulator implements three CPU scheduling algorithms:
+
+### FIFO (First In First Out)
+
+Processes execute in the order they are added to the ready queue.
+
+### Round Robin
+
+Processes execute using a fixed time quantum, allowing multiple processes to share CPU time.
+
+### Priority Scheduling
+
+Processes are executed based on priority values from 1-5, with higher priority processes running first.
+
+Commands:
+
+addproc <name> <burst_time> <priority>
+
+schedfifo
+
+schedrr
+
+schedprioqueue
+
+showprocs
+
+
+---
+
+# Memory Management
+
+The memory manager simulates paging using page tables and physical memory frames.
+
+Implemented features:
+
+- Fixed number of physical memory frames
+- Page allocation and deallocation per process
+- FIFO page replacement
+- Page table visualization
+- Memory usage reporting
+- Memory fragmentation analysis
+
+Commands:
+
+allocmem <pid> <pages>
+
+freemem <pid>
+
+memstatus
+
+pagetables
+
+fragmentation
+
+
+---
+
+# Virtual File System
+
+The simulator includes an in-memory file system supporting basic file operations.
+
+Implemented features:
+
+- Creating files
+- Reading files
+- Writing/modifying files
+- Deleting files
+- Listing files
+- File operation logging
+
+Commands:
+
+create <filename> <content>
+
+read <filename>
+
+write <filename> <content>
+
+delete <filename>
+
+ls
+
+
+---
+
+# Interactive Shell
+
+The project includes a custom command-line shell that allows users to interact with the simulated operating system.
+
+General commands:
+
+help
+
+dashboard
+
+exit
+
+
+The dashboard displays system information including process status, memory usage, and file system information.
+
+---
+
+# Project Structure
+
 Mini OS Simulator
 
-Overview
-This project is a simple operating system simulator written in C++. It demonstrates basic operating system concepts such as process scheduling, memory management, and file system operations through a CLI.
+CustomShell.cpp  
+CustomShell.h  
+
+ProcessScheduler.h  
+Process.h  
+
+MemoryManager.cpp  
+MemoryManager.h  
+
+FileSystem.cpp  
+FileSystem.h  
+
+main.cpp  
+
+Makefile  
+
+README.md
 
 
-Features
+---
 
-Process Scheduling
-The simulator supports the following scheduling algorithms:
+# Technologies Used
 
-FIFO (First In First Out)
-Processes run in the order they are added.
-
-Round Robin
-Each process runs for a fixed time quantum before being placed back in the queue.
-
-Priority Scheduling
-Processes with higher priority values run before lower priority ones.
+- C++
+- Object-Oriented Programming
+- Data Structures
+- Operating Systems Concepts
+- Make Build System
 
 
-
-Memory Management
-The memory manager simulates paging with page tables.
-
-Features include:
-
-Fixed number of physical memory frames
-
-Page allocation and deallocation per process
-
-FIFO page replacement
-
-Memory usage display
-
-Memory fragmentation analysis
-
-
-File System
-A simple in memory file system that supports:
-
-Creating files
-
-Reading files
-
-Writing to files
-
-Deleting files
-
-Listing files
-
+---
 
 # Installation and Usage
 
@@ -56,76 +154,43 @@ Listing files
 
 Using Make:
 
-```bash
 make
-```
+
 
 ## Run
-```bash
+
 make run
-```
 
 
-Process Scheduling Commands
+## Clean Build Files
 
-addproc <name> <burst_time> <priority (1-5)>
-schedfifo
-schedrr
-schedprioqueue
-showprocs
+make clean
 
-addproc adds a new process. Priority is optional and ranges from 1 to 5.
-schedprioqueue runs the standalone priority queue scheduler.
 
-Memory Commands
+---
 
-allocmem <pid> <pages>
-freemem <pid>
-memstatus
-pagetables
-fragmentation
+# Future Improvements
 
-File System Commands
+Possible future additions:
 
-create <filename> <content>
-read <filename>
-write <filename> <content>
-delete <filename>
-ls
+- Multilevel feedback queue scheduling
+- User permissions
+- Persistent storage
+- Virtual memory simulation
+- Additional shell commands
+- Process states (running, waiting, terminated)
 
-General Commands
 
-help
-dashboard
-exit
+---
 
-Priority Queue Scheduling Example
+# Concepts Demonstrated
 
-OS> schedprioqueue
-proc> A 5 1
-proc> B 3 5
-proc> C 4 3
-proc> done
+This project demonstrates understanding of:
 
-Execution order:
-
-[TIME 0] Running B (priority 5)
-[TIME 3] Running C (priority 3)
-[TIME 7] Running A (priority 1)
-
-Higher priority processes run first. If two processes have the same priority, they run in the order they were added.
-
-The other scheduling types require using addproc <name> <burst time> and then running the command (schedfifo or schedrr)
-
-Project Structure
-
-CustomShell.cpp
-CustomShell.h
-ProcessScheduler.cpp
-ProcessScheduler.h
-MemoryManager.cpp
-MemoryManager.h
-FileSystem.cpp
-FileSystem.h
-Process.h
-README.md
+- CPU scheduling algorithms
+- Memory management
+- Paging and page tables
+- File system design
+- Command-line interfaces
+- Object-oriented software architecture
+- Modular C++ development
